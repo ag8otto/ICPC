@@ -11,7 +11,7 @@ int N, i;
 set<int> D;
 
 int main() {
-    ifstream cin("input1.txt");
+    ifstream cin("input.txt");
     ofstream cout("output.txt");
 
     cin >> N;

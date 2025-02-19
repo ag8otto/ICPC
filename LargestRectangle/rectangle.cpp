@@ -8,7 +8,7 @@ using namespace std;
 
 int main()
 {
-    ifstream cin("input2.txt");
+    ifstream cin("input.txt");
     ofstream cout("output.txt");
 
     int N;

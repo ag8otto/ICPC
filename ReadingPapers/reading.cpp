@@ -1,5 +1,3 @@
-// NOTE: it is recommended to use this even if you don't understand the following code.
-
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -34,17 +32,20 @@ int maxDayi(vector<pair<int, int>>& PD, int index, int remaining_days) {
     PD.erase(PD.begin());
     return max_value;
 }
+
 void print(vector<pair<int, int>>){
     for (const auto& p : PD) {
         cout << p.first << ' ' << p.second << endl;
     }
     cout << endl;
 }
+
 void remove_Delem(vector<pair<int, int>>& PD, int index) {
     PD.erase(remove_if(PD.begin(), PD.end(), [index](const pair<int, int>& p) {
         return p.second <= index && p.second != -1;
     }), PD.end());
 }
+
 int main() {
 //  uncomment the following lines if you want to read/write from files
     ifstream cin("input1.txt");

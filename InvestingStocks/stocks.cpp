@@ -12,7 +12,7 @@ vector<int> V, S;
 
 int main() {
 //  uncomment the following lines if you want to read/write from files
-    ifstream cin("input0.txt");
+    ifstream cin("input.txt");
     ofstream cout("output.txt");
 
     cin >> N;

@@ -7,7 +7,7 @@ using namespace std;
 int N1, N2;
 
 int main() {
-    ifstream cin("input0.txt");
+    ifstream cin("input.txt");
     ofstream cout("output.txt");
 
     cin >> N1 >> N2;
