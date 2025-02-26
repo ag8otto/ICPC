@@ -1,4 +1,4 @@
 YES
+GRG
 RGB
 GBR
-BRG
