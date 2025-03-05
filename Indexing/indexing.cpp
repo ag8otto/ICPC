@@ -1,5 +1,3 @@
-// NOTE: it is recommended to use this even if you don't understand the following code.
-
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -9,8 +7,8 @@ using namespace std;
 
 int main()
 {
-    ifstream cin("input4.txt");
-    //ofstream cout("output.txt");
+    ifstream cin("input.txt");
+    ofstream cout("output.txt");
 
     string A, B;
     cin >> A;
@@ -18,24 +16,27 @@ int main()
     string C;
     size_t diff = 0;
     while (diff < A.size() && A[diff] == B[diff])
-    {
         diff++;
-    }
     C = A.substr(0, diff);
+
     while (diff < A.length() && diff < B.length())
     {
-        char candidate = (A[diff] + B[diff]) / 2;
-        C.push_back(candidate);
-        if (candidate != A[diff])
+        for (char i = A[diff]; i <= B[diff]; i++)
         {
-            cout << C << endl;
-            return 0;
+            C.push_back(i);
+            if (A < C && C < B)
+            {
+                cout << C << endl;
+                return 0;
+            }
+            C.pop_back();
         }
+        C.push_back(A[diff]);
         diff++;
     }
-    while (diff <= A.size())
+    while (diff <= A.length())
     {
-        if (diff == A.size())
+        if (diff == A.length())
         {
             C.push_back('a');
         }
@@ -60,3 +61,4 @@ int main()
         cout << C << endl;
     return 0;
 }
+
