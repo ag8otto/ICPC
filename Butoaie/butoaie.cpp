@@ -12,27 +12,30 @@ bool isPossible(int X, vector<int> V, int best, int worst, int K)
     long int sum = 0;
     for (size_t i = 0; i < V.size(); i++)
     {
-        D[i] = static_cast<int>(ceil(static_cast<double>(V[i] - X * worst) / (best - worst)));
+        D[i] = ((V[i] - X * worst + best - worst - 1) / (best - worst));
         if (D[i] > X)
             return false;
-        sum += D[i];
+        if (D[i] > 0)
+            sum += D[i];
     }
-    if (sum > (long)(K * X))
+    if (sum >= (K * X)){
         return false;
-    else
+    }else
         return true;
 }
 int main()
 {
-    ifstream cin("input0.txt");
-    // ofstream cout("output.txt");
+    ifstream cin("input.txt");
+    ofstream cout("output.txt");
     int N, K, Q, P;
     cin >> N >> K;
     cin >> P >> Q;
     vector<int> V(N);
     for (int i = 0; i < N; i++)
+    {
         cin >> V[i];
-    int best, worst;
+    }
+    int best, worst, disp = K;
     if (P > Q)
     {
         best = P;
@@ -42,26 +45,32 @@ int main()
     {
         best = Q;
         worst = P;
-        K = N - K;
+        disp = N - K;
     }
-    cout << best << ' ' << K << endl;
-    cout << worst << ' ' << N - K << endl;
+
     int max = *max_element(V.begin(), V.end());
-    int left = max / best, right = max / worst; // Definisci l'intervallo di ricerca
-    int result = right;
+    int left = (max / best);
+    int right = static_cast<int>(ceil(static_cast<double>(max) / worst)); 
     while (left <= right)
     {
         int mid = (right + left) / 2;
-        if (isPossible(mid, V, best, worst, K))
+        int sum = 0;
+        for (int i = 0; i < N; i++)
         {
-            result = mid;
-            right = mid - 1; // Cerca nella metà sinistra
+            if(V[i] <= worst * mid) continue;
+
+            int cell_need = (V[i] - worst*mid + best - worst - 1) / (best - worst);
+            if(cell_need > mid){
+                sum += disp * mid + 1;
+                break;
+            }
+            sum += cell_need;
         }
+        if(sum <= disp * mid)
+            right = mid - 1;
         else
-        {
-            left = mid + 1; // Cerca nella metà destra
-        }
+            left = mid + 1;
     }
-    cout << result << endl; // Stampa il risultato
+    cout << right + 1 << endl; // Stampa il risultato
     return 0;
 }

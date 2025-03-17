@@ -6,8 +6,8 @@
 using namespace std;
 int main()
 {
-    ifstream cin("input0.txt");
-    // ofstream cout("output.txt");
+    ifstream cin("input.txt");
+    ofstream cout("output.txt");
 
     int N;
     long long M, L;
@@ -37,12 +37,8 @@ int main()
                 long long start = max(0LL, D[i] - M);
                 long long end = D[i] + M;
                 spot[start]++;
-                if (end + 1 < L)
+                if (end + 1 <= L)
                     spot[end + 1]--;
-            }
-            for (const auto &p : spot)
-            {
-                cout << "(" << p.first << ", " << p.second << ")" << endl;
             }
             checkspot = N;
             int currcheck = 0;
