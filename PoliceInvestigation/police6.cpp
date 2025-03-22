@@ -29,8 +29,7 @@ int main()
             checkspot = 0;
         else if (D[0] == M || D[N - 1] + M == L)
             checkspot = 1;
-        else
-        {
+        else{
             map<long long, int> spot;
             for (int i = 0; i < N; i++)
             {
