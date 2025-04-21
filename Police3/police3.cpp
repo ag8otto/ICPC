@@ -1,15 +1,14 @@
-// NOTE: it is recommended to use this even if you don't understand the following code.
-
 #include <iostream>
 #include <fstream>
 #include <vector>
 #include <cmath>
 #include <numeric>
+#include <algorithm>
 using namespace std;
 
 int main()
 {
-    ifstream cin("input0.txt");
+    // ifstream cin("input0.txt");
     //  ofstream cout("output.txt");
 
     int N;
@@ -20,11 +19,17 @@ int main()
         cin >> T[i];
 
     vector<int> S(N, -1);
-    for (size_t i = 0; i < N; i++)
+    int prev_stop = T[0];
+    int prev_skip = 0;
+
+    for (int i = 1; i < N; i++)
     {
-        /* code */
+        int curr_stop = min(prev_stop, prev_skip) + T[i];
+        int curr_skip = prev_stop;
+
+        prev_stop = curr_stop;
+        prev_skip = curr_skip;
     }
-    
-    cout << 42 << endl; // print the result
+    cout << min(prev_stop, prev_skip) << endl;
     return 0;
 }
