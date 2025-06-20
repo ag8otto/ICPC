@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/agostino/Main_Info/ICPC/Acquisti",
-      "program": "/home/agostino/Main_Info/ICPC/Acquisti/build/Debug/outDebug",
+      "cwd": "/home/agostino/Main_Info/ICPC/GREEDY-SW/Butoaie",
+      "program": "/home/agostino/Main_Info/ICPC/GREEDY-SW/Butoaie/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

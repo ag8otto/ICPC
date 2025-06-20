@@ -10,14 +10,12 @@ int main()
 {
     ifstream cin("input.txt");
     ofstream cout("output.txt");
-    int N, K, Q, P;
+    int N, K, P, Q;
     cin >> N >> K;
     cin >> P >> Q;
     vector<int> V(N);
     for (int i = 0; i < N; i++)
-    {
         cin >> V[i];
-    }
     int best, worst, disp = K;
     if (P > Q)
     {
@@ -32,7 +30,7 @@ int main()
     }
 
     int max = *max_element(V.begin(), V.end());
-    int left = (max / best);
+    int left = static_cast<int>(ceil(static_cast<double>(max) / best));
     int right = static_cast<int>(ceil(static_cast<double>(max) / worst));
     while (left <= right)
     {
