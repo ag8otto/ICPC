@@ -18,8 +18,6 @@ double findR(double X, double Y)
     double R = 0;
     for (int i = 0; i < 3; i++)
     {
-        double eps = 1e-9;
-
         R = max(R, dist(coord[i].first, coord[i].second, X, Y) +
                        dist(coord[(i + 1) % 3].first, coord[(i + 1) % 3].second, X, Y));
     }
@@ -32,7 +30,7 @@ double bestX(double Y)
     double xd = minX + 2 * (maxX - minX) / 3;
     double ru = findR(xu, Y);
     double rd = findR(xd, Y);
-    //cout << minX << ' ' << maxX << "  ru = " << ru << "|  rd = " << rd << endl;
+    // cout << minX << ' ' << maxX << "  ru = " << ru << "|  rd = " << rd << endl;
     if (ru < rd)
     {
         maxX = xd;
@@ -50,7 +48,7 @@ double bestY(double X)
     double yd = minY + 2 * (maxY - minY) / 3;
     double ru = findR(X, yu);
     double rd = findR(X, yd);
-    //cout << minY << ' ' << minY << "  ru = " << ru << "|  rd = " << rd << endl
+    // cout << minY << ' ' << minY << "  ru = " << ru << "|  rd = " << rd << endl
     if (ru < rd)
     {
         maxY = yd;
@@ -79,11 +77,10 @@ int main()
     double eps = 1e-9;
     double prev;
     double curr = DBL_MAX;
-    double Y = minY + (maxY - minY) / 2;
-    double X = minX + (maxX - minX) / 2;
+    double Y = (maxY + minY) / 2;
+    double X = (maxX + minX) / 2;
     do
     {
-
         double mx = bestX(Y);
         double my = bestY(X);
         prev = curr;
@@ -92,5 +89,8 @@ int main()
         X = mx;
     } while (abs(prev - curr) > eps);
 
-    cout << curr << endl;
+    cout << curr << " (" << X << ',' << Y << ')' << endl;
+    cout << endl
+         << dist(2.5, 2.5, 0, 0) << endl;
+    cout << findR(3, 1) << " (" << 3 << ',' << 1 << ')' << endl;
 }

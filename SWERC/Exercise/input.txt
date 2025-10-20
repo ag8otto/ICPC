@@ -1,4 +1,17 @@
-3
-9 2 4
-1 5 3
-7 8 6
+8
+A
+B
+B
+C
+C
+A
+AA
+BB
+BB
+CC
+CC
+AA
+ABAB
+BCBC
+ABC
+CBA
